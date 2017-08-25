@@ -4,7 +4,8 @@ import org.xbib.marc.json.MarcJsonWriter;
 import org.xbib.marc.transformer.value.MarcValueTransformers;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.File;
 import java.nio.charset.Charset;
 import java.text.Normalizer;
 
@@ -32,6 +33,14 @@ public class marc2jsonl {
 	Option records = new Option("r","records",true,"Records per file");
 	records.setRequired(false);
 	options.addOption(records);
+	
+	Option index = new Option("x","index",true,"ElasticSearch Index");
+	index.setRequired(true);
+	options.addOption(index);
+
+	Option type = new Option("t","type",true,"ElasticSearch type");
+	type.setRequired(true);
+	options.addOption(type);
 
 	CommandLineParser parser = new DefaultParser();
 	HelpFormatter formatter = new HelpFormatter();
@@ -45,21 +54,34 @@ public class marc2jsonl {
 		System.exit(1);
 		return;
 	}
-	String inputFilePath = cmd.getOptionValue("input");
-	String outputFilePath = cmd.getOptionValue("output")+"/";
-	boolean compression = cmd.hasOption("gzip");
-	int reccount = 500;
+
+	boolean compression   = cmd.hasOption("gzip");
+	String inputFilePath  = new File(cmd.getOptionValue("input")).getAbsolutePath();
+	String outputFilePath = new File(cmd.getOptionValue("output")+"/").getAbsolutePath();
+	String searchIndex    = new String(cmd.getOptionValue("index"));
+	String indexType      = new String(cmd.getOptionValue("type"));
 	String gz;
-        if(compression){
+	FileInputStream in = null;
+
+        
+	if(compression){
 		gz=new String(".gz");
 	}else{
 		gz=new String("");
 	}
+	
+	int reccount = 500;
 	if(cmd.hasOption("records")){
 		reccount=Integer.parseInt(cmd.getOptionValue("records"));
 	}
 
-        InputStream in = marc2jsonl.class.getResourceAsStream(inputFilePath);
+	try
+	{
+        	in = new FileInputStream(inputFilePath);
+        } catch (IOException e) {
+		e.printStackTrace();
+	}
+
         MarcValueTransformers marcValueTransformers = new MarcValueTransformers();
         //normalize ANSEL diacritics
         marcValueTransformers.setMarcValueTransformer(value -> Normalizer.normalize(value, Normalizer.Form.NFC));
@@ -67,7 +89,7 @@ public class marc2jsonl {
 	try(
         		MarcJsonWriter writer = new MarcJsonWriter(outputFilePath+"bulk.jsonl.%d"+gz,reccount,
 	                MarcJsonWriter.Style.ELASTICSEARCH_BULK,65536,compression)
-	                .setIndex("testindex","testtype")){
+	                .setIndex(searchIndex,indexType)){
 		            writer.setMarcValueTransformers(marcValueTransformers);
 	        	    Marc.builder()
 	                    .setFormat(MarcXchangeConstants.MARCXCHANGE_FORMAT)
