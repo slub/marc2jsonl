@@ -1,5 +1,5 @@
 # marc2jsonl
-simple tool to convert marc21 files to Line-delimited JSON using xbib/marc java-library.
+simple tool to convert marc21 files to Line-delimited JSON which can be used to index data into ElasticSearch using xbib/marc java-library.
 
 dependencies:
 https://github.com/xbib/marc/
