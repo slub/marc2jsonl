@@ -34,12 +34,12 @@ public class marc2jsonl {
 	records.setRequired(false);
 	options.addOption(records);
 	
-	Option index = new Option("x","index",true,"ElasticSearch Index");
-	index.setRequired(true);
-	options.addOption(index);
+	Option indexname = new Option("n","indexname",true,"ElasticSearch Index Name");
+	indexname.setRequired(false);
+	options.addOption(indexname);
 
 	Option type = new Option("t","type",true,"ElasticSearch type");
-	type.setRequired(true);
+	type.setRequired(false);
 	options.addOption(type);
 
 	CommandLineParser parser = new DefaultParser();
@@ -56,10 +56,15 @@ public class marc2jsonl {
 	}
 
 	boolean compression   = cmd.hasOption("gzip");
+	boolean indication    = cmd.hasOption("indexname");
 	String inputFilePath  = new File(cmd.getOptionValue("input")).getAbsolutePath();
-	String outputFilePath = new File(cmd.getOptionValue("output")+"/").getAbsolutePath();
-	String searchIndex    = new String(cmd.getOptionValue("index"));
-	String indexType      = new String(cmd.getOptionValue("type"));
+	String outputFilePath = new File(cmd.getOptionValue("output")).getAbsolutePath() + "/";
+	String searchIndex = null;
+	String indexType = null;
+	if(indication){
+		searchIndex    = new String(cmd.getOptionValue("indexname"));
+		indexType      = new String(cmd.getOptionValue("type"));
+	}
 	String gz;
 	FileInputStream in = null;
 
@@ -86,22 +91,40 @@ public class marc2jsonl {
         //normalize ANSEL diacritics
         marcValueTransformers.setMarcValueTransformer(value -> Normalizer.normalize(value, Normalizer.Form.NFC));
         //split at 500 records, select Elasticsearch buffer size 65536, gzip compression disabled
-	try(
+	if(indication){
+		try(
         		MarcJsonWriter writer = new MarcJsonWriter(outputFilePath+"bulk.jsonl.%d"+gz,reccount,
-	                MarcJsonWriter.Style.ELASTICSEARCH_BULK,65536,compression)
-	                .setIndex(searchIndex,indexType)){
+	               	MarcJsonWriter.Style.ELASTICSEARCH_BULK,65536,compression)
+		               .setIndex(searchIndex,indexType)){
 		            writer.setMarcValueTransformers(marcValueTransformers);
-	        	    Marc.builder()
-	                    .setFormat(MarcXchangeConstants.MARCXCHANGE_FORMAT)
-	                    .setType(MarcXchangeConstants.BIBLIOGRAPHIC_TYPE)
-	                    .setInputStream(in)
-	                    .setCharset(Charset.forName("UTF-8"))
-	                    .setMarcListener(writer)
-	                    .build()
-	                    .writeCollection();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-       	}
+		       	    Marc.builder()
+		                   .setFormat(MarcXchangeConstants.MARCXCHANGE_FORMAT)
+		                   .setType(MarcXchangeConstants.BIBLIOGRAPHIC_TYPE)
+		                   .setInputStream(in)
+		                   .setCharset(Charset.forName("UTF-8"))
+		                   .setMarcListener(writer)
+		                   .build()
+		                   .writeCollection();
+     		} catch (IOException e) {
+            		e.printStackTrace();
+       		}	
+	}else{
+		try(
+        			MarcJsonWriter writer = new MarcJsonWriter(outputFilePath+"bulk.jsonl.%d"+gz,reccount,
+	                	MarcJsonWriter.Style.LINES,65536,compression)
+		                .setIndex(searchIndex,indexType)){
+			            writer.setMarcValueTransformers(marcValueTransformers);
+		        	    Marc.builder()
+		                    .setFormat(MarcXchangeConstants.MARCXCHANGE_FORMAT)
+		                    .setType(MarcXchangeConstants.BIBLIOGRAPHIC_TYPE)
+		                    .setInputStream(in)
+		                    .setCharset(Charset.forName("UTF-8"))
+		                    .setMarcListener(writer)
+		                    .build()
+		                    .writeCollection();
+        	} catch (IOException e) {
+            		e.printStackTrace();
+       		}
+    	}
     }
 } 
