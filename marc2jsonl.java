@@ -20,7 +20,7 @@ public class marc2jsonl {
         String searchIndex = null;
         String indexType = null;
         String inputFilePath = null;
-        String outputFilePath = null;
+        File outputFile = null;
         PrintStream printStream = null;
         Options options = new Options();
 
@@ -70,11 +70,11 @@ public class marc2jsonl {
             }
         }
         if(writeToFile) {
-            outputFilePath = new File(cmd.getOptionValue("output")).getAbsolutePath();
             try {
-                printStream = new PrintStream(new File(FileSystemView.getFileSystemView()
-                                                       .getDefaultDirectory().toString()
-                                                       + File.separator + outputFilePath));
+            outputFile = new File(cmd.getOptionValue("output"));
+            outputFile.createNewFile();
+            FileOutputStream oFile = new FileOutputStream(outputFile,false);
+            printStream = new PrintStream(oFile);
                 System.setOut(printStream);
             } catch (Exception e) {
                 e.printStackTrace();
