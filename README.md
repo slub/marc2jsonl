@@ -8,11 +8,11 @@ http://commons.apache.org/proper/commons-cli/
 build:
 install apache commons cli java package and xbib/marc package.
 modify Makefile to have the proper java classpaths to both packages.
-type `make`
+type `make`. install via `make install` and use it in the unix way.
 
 run:
 
-$java -classpath ./build/libs/marc-1.0.12.jar:/usr/share/java/commons-cli.jar marc2json <OPTARG>
+$ marc2json <OPTARG>
 
 valid options are:
 -i --input:	MARC21 input file
