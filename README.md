@@ -15,9 +15,13 @@ run:
 `$ marc2jsonl <OPTARG>`
 
 valid options are:
+
 -i --input:	MARC21 input file
+
 -o --output: 	output directory
+
 -n --indexname: name of the ElasticSearch Index
+
 -t --type:	name of the ElasticSearch datatype
 
 
@@ -25,7 +29,7 @@ examples:
 
 `$ marc2jsonl -i input.mrc -o output.jsonl -n test -t marc`
 
-transformes the marc data from input.mrc to line-delimited and saves to the file output.jsonl
+transformes the marc data from input.mrc to line-delimited json and saves to the file output.jsonl
 
 
 `$ marc2jsonl < input.mrc | esbulk -index test -type marc`
