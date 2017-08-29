@@ -12,10 +12,22 @@ type `make`. install via `make install` and use it in the unix way.
 
 run:
 
-$ marc2json <OPTARG>
+`$ marc2jsonl <OPTARG>`
 
 valid options are:
 -i --input:	MARC21 input file
 -o --output: 	output directory
 -n --indexname: name of the ElasticSearch Index
 -t --type:	name of the ElasticSearch datatype
+
+
+examples:
+
+`$ marc2jsonl -i input.mrc -o output.jsonl -n test -t marc`
+
+transformes the marc data from input.mrc to line-delimited and saves to the file output.jsonl
+
+
+`$ marc2jsonl < input.mrc | esbulk -index test -type marc`
+
+transforms the marc data from stdin and pipes it to esbulk (https://github.com/miku/esbulk) which indexes the data and uploads it to an ElasticSearch-Server
