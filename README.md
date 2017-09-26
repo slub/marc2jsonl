@@ -35,3 +35,8 @@ transformes the marc data from input.mrc to line-delimited json and saves to the
 `$ marc2jsonl < input.mrc | esbulk -index test -type marc`
 
 transforms the marc data from stdin and pipes it to esbulk (https://github.com/miku/esbulk) which indexes the data and uploads it to an ElasticSearch-Server
+
+
+`$ pv input.mrc | marc2jsonl > output.jsonl`
+
+watch the progress with pipeview and transform the marc data from input.mrc to the file output.jsonl
