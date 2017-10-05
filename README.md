@@ -39,4 +39,4 @@ transforms the marc data from stdin and pipes it to esbulk (https://github.com/m
 
 `$ pv input.mrc | marc2jsonl > output.jsonl`
 
-watch the progress with pipeview and transform the marc data from input.mrc to the file output.jsonl
+watch the progress with pipeview (http://www.ivarch.com/programs/pv.shtml) and transform the marc data from input.mrc to the file output.jsonl
