@@ -1,6 +1,6 @@
 JAVAC=javac
 JFLAGS=-g 
-CLASSPATH=/usr/share/java/commons-cli.jar:/home/bhering/src/eval/marc/build/libs/marc-1.0.12.jar
+CLASSPATH=/usr/share/java/
 INSTALL_PATH=/usr/share/java/
 INSTALL_BATCH=/usr/bin/marc2jsonl
 default: marc2jsonl.class
