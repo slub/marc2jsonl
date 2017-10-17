@@ -1,17 +1,29 @@
+package de.slubdresden.marc2jsonl;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.charset.Charset;
+import java.text.Normalizer;
+
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.xbib.marc.Marc;
 import org.xbib.marc.MarcXchangeConstants;
 import org.xbib.marc.json.MarcJsonWriter;
-import org.xbib.marc.json.MarcJsonWriter.*;
+import org.xbib.marc.json.MarcJsonWriter.Style;
 import org.xbib.marc.transformer.value.MarcValueTransformers;
 
-import java.io.*;
-import java.nio.charset.Charset;
-import java.text.Normalizer;
-import javax.swing.filechooser.*;
-import org.apache.commons.cli.*;
 
-
-public class marc2jsonl {
+public class Marc2JSONL {
 
     public static void main(String args[]) {
 
@@ -48,7 +60,7 @@ public class marc2jsonl {
             cmd = parser.parse(options,args);
         } catch(ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("marc2jsonl",options);
+            formatter.printHelp("Marc2JSONL",options);
             System.exit(1);
             return;
         }
@@ -64,7 +76,7 @@ public class marc2jsonl {
             System.setIn(in);
             } catch (FileNotFoundException e) {
                 System.out.println(e.getMessage());
-                formatter.printHelp("marc2jsonl",options);
+                formatter.printHelp("Marc2JSONL",options);
                 System.exit(1);
                 return;
             }
