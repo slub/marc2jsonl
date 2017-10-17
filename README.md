@@ -10,6 +10,11 @@ build:
 
     mvn clean package
 
+install:
+
+    su
+    make install
+
 run:
 
     marc2jsonl <OPTARG>
