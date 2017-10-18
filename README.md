@@ -10,6 +10,10 @@ build:
 
     mvn clean package
 
+or
+
+    make
+
 install:
 
     su

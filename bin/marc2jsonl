@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar ../target/marc2jsonl-0.0.1-SNAPSHOT-onejar.jar $@ 
