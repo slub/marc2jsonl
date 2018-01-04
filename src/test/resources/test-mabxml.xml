@@ -4,7 +4,9 @@
 		<feld ind=" " nr="001">(FR-PaOEC)6bee255b-ar</feld>
 		<feld ind="a" nr="002">20171208</feld>
 		<feld ind=" " nr="004">20171208</feld>
-		<feld ind=" " nr="020">(FR-PaOEC)6bee255b-ar�OECD</feld>
+		<feld ind=" " nr="020">(FR-PaOEC)6bee255b-ar
+			<tf/>
+			OECD</feld>
 		<feld ind=" " nr="025">6bee255b-ar</feld>
 		<feld ind=" " nr="030">a|zuc||||||37</feld>
 		<feld ind="b" nr="037">ara</feld>
@@ -43,7 +45,9 @@
 		<feld ind=" " nr="001">(FR-PaOEC)6f8029f6-es</feld>
 		<feld ind="a" nr="002">20171208</feld>
 		<feld ind=" " nr="004">20171208</feld>
-		<feld ind=" " nr="020">(FR-PaOEC)6f8029f6-es�OECD</feld>
+		<feld ind=" " nr="020">(FR-PaOEC)6f8029f6-es
+			<tf/>
+			OECD</feld>
 		<feld ind=" " nr="025">6f8029f6-es</feld>
 		<feld ind=" " nr="030">a|zuc||||||37</feld>
 		<feld ind="b" nr="037">spa</feld>
@@ -56,7 +60,7 @@
 			<uf code="a">ZDB-164-UNL-ebook</uf>
 		</feld>
 		<feld ind="b" nr="200">ECLAC</feld>
-		<feld ind=" " nr="331">Pol�itica Industrial Rural y Fortalecimiento de Cadenas de Valor</feld>
+		<feld ind=" " nr="331">Política Industrial Rural y Fortalecimiento de Cadenas de Valor</feld>
 		<feld ind=" " nr="334">Elektronische Ressource</feld>
 		<feld ind=" " nr="359">ECLAC</feld>
 		<feld ind=" " nr="410">New York</feld>
@@ -79,7 +83,9 @@
 		<feld ind=" " nr="001">(FR-PaOEC)c78e1213-ar</feld>
 		<feld ind="a" nr="002">20171208</feld>
 		<feld ind=" " nr="004">20171208</feld>
-		<feld ind=" " nr="020">(FR-PaOEC)c78e1213-ar�OECD</feld>
+		<feld ind=" " nr="020">(FR-PaOEC)c78e1213-ar
+			<tf/>
+			OECD</feld>
 		<feld ind=" " nr="025">c78e1213-ar</feld>
 		<feld ind=" " nr="030">a|zuc||||||37</feld>
 		<feld ind="b" nr="037">ara</feld>
@@ -130,7 +136,7 @@
 		</feld>
 		<feld ind=" " nr="775">
 			<uf code="i">Parallelausgabe</uf>
-			<uf code="t">Rapport sur les Objectifs de D�eveloppement Durable 2017</uf>
+			<uf code="t">Rapport sur les Objectifs de Développement Durable 2017</uf>
 			<uf code="z">9789213617168</uf>
 		</feld>
 	</datensatz>

@@ -32,12 +32,14 @@ public class Marc2JSONL {
 	private static final String INPUT_PARAMETER = "input";
 	private static final String OUTPUT_PARAMETER = "output";
 	private static final String MABXMLINPUT_PARAMETER = "mabxmlinput";
+	private static final String MABINPUT_PARAMETER = "mabinput";
 	private static final String INDEXNAME_PARAMETER = "indexname";
 	private static final String TYPE_PARAMETER = "type";
 	private static final String MARC_2_JSONL_TOOL_NAME = "Marc2JSONL";
 
 	private static final String MAB_XML_FORMAT = "MabXML";
-	private static final String MAB_XML_TYPE = "h";
+	private static final String MAB_FORMAT = "MAB";
+	private static final String MAB_TYPE = "h";
 
 	private static final int BUFFER_SIZE = 65536;
 	private static final int FAILED_EXIT_STATUS = 1;
@@ -57,6 +59,10 @@ public class Marc2JSONL {
 		final Option mabxml = new Option("mabxml", MABXMLINPUT_PARAMETER, false, "input is MabXML");
 		mabxml.setRequired(false);
 		options.addOption(mabxml);
+
+		final Option mab = new Option("mab", MABINPUT_PARAMETER, false, "input is MAB");
+		mab.setRequired(false);
+		options.addOption(mab);
 
 		final Option indexname = new Option("n", INDEXNAME_PARAMETER, true, "ElasticSearch Index Name");
 		indexname.setRequired(false);
@@ -101,6 +107,7 @@ public class Marc2JSONL {
 		final boolean writeToFile = cmd.hasOption(OUTPUT_PARAMETER);
 		final boolean readFromFile = cmd.hasOption(INPUT_PARAMETER);
 		final boolean mabxmlInput = cmd.hasOption(MABXMLINPUT_PARAMETER);
+		final boolean mabInput = cmd.hasOption(MABINPUT_PARAMETER);
 		final boolean indication = cmd.hasOption(INDEXNAME_PARAMETER);
 
 		if (readFromFile) {
@@ -185,11 +192,20 @@ public class Marc2JSONL {
 				final MarcContentHandler contentHandler = new MabXMLContentHandler()
 						.addNamespace(MabXMLConstants.MABXML_NAMESPACE)
 						.setFormat(MAB_XML_FORMAT)
-						.setType(MAB_XML_TYPE)
+						.setType(MAB_TYPE)
 						.setMarcValueTransformers(marcValueTransformers)
 						.setMarcListener(writer);
 
 				builder = tempBuilder.setContentHandler(contentHandler);
+			} else if (mabInput) {
+
+				writer = tempWriter2.setFormat(MAB_FORMAT)
+						.setType(MAB_TYPE);
+
+				builder = tempBuilder
+						.setFormat(MAB_FORMAT)
+						.setType(MAB_TYPE)
+						.setMarcListener(MAB_TYPE, writer);
 			} else {
 
 				writer = tempWriter2.setMarcValueTransformers(marcValueTransformers);
@@ -207,6 +223,9 @@ public class Marc2JSONL {
 				marc.xmlReader().parse(new InputSource(System.in));
 
 				writer.endCollection();
+			} else if (mabInput) {
+
+				marc.writeCollection(MAB_TYPE);
 			} else {
 
 				marc.writeCollection();
