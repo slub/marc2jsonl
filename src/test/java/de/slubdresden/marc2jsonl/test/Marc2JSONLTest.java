@@ -22,7 +22,6 @@ public class Marc2JSONLTest {
 	private static final String INPUT_PARAMETER = "--input";
 	private static final String OUTPUT_PARAMETER = "--output";
 	private static final String MABXMLINPUT_PARAMETER = "--mabxmlinput";
-	private static final String MABINPUT_PARAMETER = "--mabinput";
 
 	private static final String PROJECT_ROOT = System.getProperty("project.root");
 	private static final String USER_DIR = System.getProperty("user.dir");
@@ -82,29 +81,6 @@ public class Marc2JSONLTest {
 
 		final String[] args = new String[]{
 				MABXMLINPUT_PARAMETER,
-				INPUT_PARAMETER,
-				inputFilePath,
-				OUTPUT_PARAMETER,
-				actualResultFilePath
-		};
-
-		Marc2JSONL.main(args);
-
-		compareLDJResultFromFile(expectedResultFilePath, actualResultFilePath);
-	}
-
-	@Test
-	public void testMABInput() throws IOException, JSONException {
-
-		final File input = new File(this.getClass().getResource("/test-mab.mab").getFile());
-		final String inputFilePath = input.getAbsolutePath();
-		final String fileName = "test-mab.ldj";
-
-		final String actualResultFilePath = DEFAULT_RESULTS_FOLDER + File.separator + fileName;
-		final String expectedResultFilePath = TEST_RESOURCES_ROOT_PATH + File.separator + fileName;
-
-		final String[] args = new String[]{
-				MABINPUT_PARAMETER,
 				INPUT_PARAMETER,
 				inputFilePath,
 				OUTPUT_PARAMETER,
