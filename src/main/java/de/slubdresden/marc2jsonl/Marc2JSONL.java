@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
 
 import org.apache.commons.cli.CommandLine;
@@ -18,106 +18,206 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.xbib.marc.Marc;
 import org.xbib.marc.MarcXchangeConstants;
+import org.xbib.marc.dialects.mab.xml.MabXMLConstants;
+import org.xbib.marc.dialects.mab.xml.MabXMLContentHandler;
 import org.xbib.marc.json.MarcJsonWriter;
 import org.xbib.marc.json.MarcJsonWriter.Style;
 import org.xbib.marc.transformer.value.MarcValueTransformers;
+import org.xbib.marc.xml.MarcContentHandler;
+import org.xml.sax.InputSource;
 
 
 public class Marc2JSONL {
 
-    public static void main(String args[]) {
+	private static final String INPUT_PARAMETER = "input";
+	private static final String OUTPUT_PARAMETER = "output";
+	private static final String MABXMLINPUT_PARAMETER = "mabxmlinput";
+	private static final String INDEXNAME_PARAMETER = "indexname";
+	private static final String TYPE_PARAMETER = "type";
+	private static final String MARC_2_JSONL_TOOL_NAME = "Marc2JSONL";
 
-        Style styletype=Style.LINES;
-        FileInputStream in = null;
-        String searchIndex = null;
-        String indexType = null;
-        String inputFilePath = null;
-        File outputFile = null;
-        PrintStream printStream = null;
-        Options options = new Options();
+	private static final String MAB_XML_FORMAT = "MabXML";
+	private static final String MAB_TYPE = "h";
 
-        Option input = new Option("i", "input",true,"input file path");
-        input.setRequired(false);
-        options.addOption(input);
+	private static final int BUFFER_SIZE = 65536;
+	private static final int FAILED_EXIT_STATUS = 1;
 
-        Option output = new Option("o","output",true,"output directory");
-        output.setRequired(false);
-        options.addOption(output);
+	private static Options createCmdOptions() {
 
-        Option indexname = new Option("n","indexname",true,"ElasticSearch Index Name");
-        indexname.setRequired(false);
-        options.addOption(indexname);
+		final Options options = new Options();
 
-        Option type = new Option("t","type",true,"ElasticSearch type");
-        type.setRequired(false);
-        options.addOption(type);
+		final Option input = new Option("i", INPUT_PARAMETER, true, "input file path");
+		input.setRequired(false);
+		options.addOption(input);
 
-        CommandLineParser parser = new DefaultParser();
-        HelpFormatter formatter = new HelpFormatter();
-        CommandLine cmd;
+		final Option output = new Option("o", OUTPUT_PARAMETER, true, "output directory");
+		output.setRequired(false);
+		options.addOption(output);
 
-        try {
-            cmd = parser.parse(options,args);
-        } catch(ParseException e) {
-            System.out.println(e.getMessage());
-            formatter.printHelp("Marc2JSONL",options);
-            System.exit(1);
-            return;
-        }
+		final Option mabxml = new Option("mabxml", MABXMLINPUT_PARAMETER, false, "input is MabXML");
+		mabxml.setRequired(false);
+		options.addOption(mabxml);
 
-        boolean writeToFile   = cmd.hasOption("output");
-        boolean readFromFile  = cmd.hasOption("input");
-        boolean indication    = cmd.hasOption("indexname");
-        
-        if(readFromFile) {
-            try{
-            inputFilePath  = new File(cmd.getOptionValue("input")).getAbsolutePath();
-            in = new FileInputStream(inputFilePath);
-            System.setIn(in);
-            } catch (FileNotFoundException e) {
-                System.out.println(e.getMessage());
-                formatter.printHelp("Marc2JSONL",options);
-                System.exit(1);
-                return;
-            }
-        }
-        if(writeToFile) {
-            try {
-            outputFile = new File(cmd.getOptionValue("output"));
-            outputFile.createNewFile();
-            FileOutputStream oFile = new FileOutputStream(outputFile,false);
-            printStream = new PrintStream(oFile);
-                System.setOut(printStream);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            printStream = new PrintStream(System.out);
-        }
-        
-        if(indication) {
-            searchIndex    = new String(cmd.getOptionValue("indexname"));
-            indexType      = new String(cmd.getOptionValue("type"));
-            styletype=Style.ELASTICSEARCH_BULK;
-        }
+		final Option indexname = new Option("n", INDEXNAME_PARAMETER, true, "ElasticSearch Index Name");
+		indexname.setRequired(false);
+		options.addOption(indexname);
 
-        MarcValueTransformers marcValueTransformers = new MarcValueTransformers();
-        //normalize ANSEL diacritics
-        marcValueTransformers.setMarcValueTransformer(value -> Normalizer.normalize(value, Normalizer.Form.NFC));
-        try(
-                MarcJsonWriter writer = new MarcJsonWriter(printStream,65536,styletype)
-            .setIndex(searchIndex,indexType)) {
-            writer.setMarcValueTransformers(marcValueTransformers);
-            Marc.builder()
-            .setFormat(MarcXchangeConstants.MARCXCHANGE_FORMAT)
-            .setType(MarcXchangeConstants.BIBLIOGRAPHIC_TYPE)
-            .setInputStream(System.in)
-            .setCharset(Charset.forName("UTF-8"))
-            .setMarcListener(writer)
-            .build()
-            .writeCollection();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+		final Option type = new Option("t", TYPE_PARAMETER, true, "ElasticSearch type");
+		type.setRequired(false);
+		options.addOption(type);
+
+		return options;
+	}
+
+	public static void main(final String args[]) {
+
+		Style styletype = Style.LINES;
+		FileInputStream in;
+		String searchIndex = null;
+		String indexType = null;
+		String absoluteInputFilePath;
+		File outputFile;
+		PrintStream printStream;
+
+		final Options options = createCmdOptions();
+
+		final CommandLineParser parser = new DefaultParser();
+		final HelpFormatter formatter = new HelpFormatter();
+
+		CommandLine cmd;
+
+		try {
+
+			cmd = parser.parse(options, args);
+		} catch (final ParseException e) {
+
+			System.out.println(e.getMessage());
+			formatter.printHelp(MARC_2_JSONL_TOOL_NAME, options);
+			System.exit(FAILED_EXIT_STATUS);
+
+			return;
+		}
+
+		final boolean writeToFile = cmd.hasOption(OUTPUT_PARAMETER);
+		final boolean readFromFile = cmd.hasOption(INPUT_PARAMETER);
+		final boolean mabxmlInput = cmd.hasOption(MABXMLINPUT_PARAMETER);
+		final boolean indication = cmd.hasOption(INDEXNAME_PARAMETER);
+
+		if (readFromFile) {
+
+			try {
+
+				final String inputFilePath = cmd.getOptionValue(INPUT_PARAMETER);
+				absoluteInputFilePath = new File(inputFilePath).getAbsolutePath();
+				in = new FileInputStream(absoluteInputFilePath);
+				System.setIn(in);
+			} catch (final FileNotFoundException e) {
+
+				System.out.println(e.getMessage());
+				formatter.printHelp(MARC_2_JSONL_TOOL_NAME, options);
+				System.exit(FAILED_EXIT_STATUS);
+
+				return;
+			}
+		}
+
+		if (writeToFile) {
+
+			try {
+
+				final String outputFilePath = cmd.getOptionValue(OUTPUT_PARAMETER);
+				outputFile = new File(outputFilePath);
+				//outputFile.createNewFile();
+				FileOutputStream oFile = new FileOutputStream(outputFile, false);
+				printStream = new PrintStream(oFile);
+				System.setOut(printStream);
+			} catch (final Exception e) {
+
+				System.out.println(e.getMessage());
+				formatter.printHelp(MARC_2_JSONL_TOOL_NAME, options);
+				System.exit(FAILED_EXIT_STATUS);
+
+				return;
+			}
+		} else {
+
+			printStream = new PrintStream(System.out);
+		}
+
+		if (indication) {
+
+			searchIndex = cmd.getOptionValue(INDEXNAME_PARAMETER);
+			indexType = cmd.getOptionValue(TYPE_PARAMETER);
+			styletype = Style.ELASTICSEARCH_BULK;
+		}
+
+		try {
+
+			//normalize ANSEL diacritics
+			final MarcValueTransformers marcValueTransformers = new MarcValueTransformers()
+					.setMarcValueTransformer(value -> Normalizer.normalize(value, Normalizer.Form.NFC));
+
+			final MarcJsonWriter tempWriter = new MarcJsonWriter(printStream, BUFFER_SIZE, styletype);
+
+			final MarcJsonWriter tempWriter2;
+
+			if (indication) {
+
+				tempWriter2 = tempWriter.setIndex(searchIndex, indexType);
+			} else {
+
+				tempWriter2 = tempWriter;
+			}
+
+			final Marc.Builder tempBuilder = Marc.builder()
+					.setInputStream(System.in)
+					.setCharset(StandardCharsets.UTF_8);
+
+			final Marc.Builder builder;
+
+			final MarcJsonWriter writer;
+
+			if (mabxmlInput) {
+
+				writer = tempWriter2;
+				writer.beginCollection();
+
+				final MarcContentHandler contentHandler = new MabXMLContentHandler()
+						.addNamespace(MabXMLConstants.MABXML_NAMESPACE)
+						.setFormat(MAB_XML_FORMAT)
+						.setType(MAB_TYPE)
+						.setMarcValueTransformers(marcValueTransformers)
+						.setMarcListener(writer);
+
+				builder = tempBuilder.setContentHandler(contentHandler);
+			} else {
+
+				writer = tempWriter2.setMarcValueTransformers(marcValueTransformers);
+
+				builder = tempBuilder
+						.setFormat(MarcXchangeConstants.MARCXCHANGE_FORMAT)
+						.setType(MarcXchangeConstants.BIBLIOGRAPHIC_TYPE)
+						.setMarcListener(writer);
+			}
+
+			final Marc marc = builder.build();
+
+			if (mabxmlInput) {
+
+				marc.xmlReader().parse(new InputSource(System.in));
+
+				writer.endCollection();
+			} else {
+
+				marc.writeCollection();
+			}
+
+			writer.close();
+		} catch (final IOException e) {
+
+			System.out.println(e.getMessage());
+			formatter.printHelp(MARC_2_JSONL_TOOL_NAME, options);
+			System.exit(FAILED_EXIT_STATUS);
+		}
+	}
 }

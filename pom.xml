@@ -4,7 +4,7 @@
 	<groupId>de.slubdresden.marc2jsonl</groupId>
 	<artifactId>marc2jsonl</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>marc2jsonl</name>
 	<url>http://slub-dresden.de</url>
 
@@ -33,8 +33,10 @@
 		<version.maven.plugin.surefire>2.20</version.maven.plugin.surefire>
 		<version.slf4j.api>1.7.25</version.slf4j.api>
 		<version.logback>1.2.3</version.logback>
-		<version.marc>1.0.17</version.marc>
+		<version.marc>1.0.19</version.marc>
 		<version.commons-cli>1.4</version.commons-cli>
+		<junit.version>4.12</junit.version>
+		<version.jsonassert>1.5.0</version.jsonassert>
 	</properties>
 
 	<repositories>
@@ -66,6 +68,40 @@
 			<groupId>commons-cli</groupId>
 			<artifactId>commons-cli</artifactId>
 			<version>${version.commons-cli}</version>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.skyscreamer</groupId>
+			<artifactId>jsonassert</artifactId>
+			<version>${version.jsonassert}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${version.slf4j.api}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${version.logback}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
