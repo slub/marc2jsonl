@@ -1,6 +1,6 @@
 # marc2jsonl
 
-simple tool to convert (binary) MARC21 or MabXML files to line-delimited JSON which can also be used to index data into ElasticSearch. It makes use of xbib/marc Java library.
+simple tool to convert (binary) MARC21, MarcXML or MabXML files to line-delimited JSON which can also be used to index data into ElasticSearch. It makes use of xbib/marc Java library.
 
 dependencies:
 
@@ -26,11 +26,13 @@ run:
 
 valid options are:
 
--i --input:	(binary) MARC21 or MabXML input file
+-i --input:	(binary) MARC21, MarcXML or MabXML input file
 
 -o --output: 	output directory
 
--mabxml--mabxmlinput:   input is MabXML
+-mabxml --mabxmlinput:   input is MabXML
+
+-marcxml --marcxmlinput:   input is MarcXML
 
 -n --indexname: name of the ElasticSearch Index
 
