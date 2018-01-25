@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns="http://www.loc.gov/MARC21/slim">
+	<record>
+		<leader>01874cam a22002778i 4500</leader>
+		<controlfield tag="001">7afaf743-en</controlfield>
+		<controlfield tag="003">FR-PaOEC</controlfield>
+		<controlfield tag="005">20170701000000.0</controlfield>
+		<controlfield tag="006">a     o  d i      </controlfield>
+		<controlfield tag="007">cr || |||m|n||</controlfield>
+		<controlfield tag="008">170501s2013    |||     o    i|0| 0 eng d</controlfield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">9789210567954</subfield>
+		</datafield>
+		<datafield ind1="7" ind2=" " tag="024">
+			<subfield code="a">10.18356/7afaf743-en</subfield>
+			<subfield code="2">doi</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(FR-PaOEC)7afaf743-en</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="a">FR-PaOEC</subfield>
+		</datafield>
+		<datafield ind1="2" ind2=" " tag="110">
+			<subfield code="a">UNDP.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="245">
+			<subfield code="a">Assessment of Development Results - China</subfield>
+			<subfield code="h">[electronic resource] /</subfield>
+			<subfield code="c">UNDP</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="260">
+			<subfield code="a">New York :</subfield>
+			<subfield code="b">United Nations,</subfield>
+			<subfield code="c">2013.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">103 p.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="490">
+			<subfield code="a">Assessment of Development Results,</subfield>
+			<subfield code="x">2518-3192.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="505">
+			<subfield code="a">Foreword -- Acronyms and abbreviations -- Executive summary -- Introduction -- Development challenges and national strategies -- UNDP response and strategies -- UNDP strategic positioning -- Contribution to development results -- Conclusions and recommendations -- Terms of reference -- Documents consulted -- Evaluation matrix -- Persons consulted -- Results and resources framework for the People’s Republic of China, 2006-2010.</subfield>
+		</datafield>
+		<datafield ind1="3" ind2=" " tag="520">
+			<subfield code="a">This Assessment of Development Results (ADR) in China is a country-level evaluation to assess the overall performance of UNDP and its contribution to development in China since 2006. It provides stakeholders an objective assessment of UNDP work and evaluates the effectiveness, efficiency and sustainability of UNDP programmes. This report also examines UNDP strategic positioning in China as well as relevance and responsiveness to China’s development priorities and needs. The ADR is situated against the background of China’s human development achievements and national priorities.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="650">
+			<subfield code="a">Economic and Social Development</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="651">
+			<subfield code="a">China, People’s Republic</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="830">
+			<subfield code="a">Assessment of Development Results,</subfield>
+			<subfield code="x">2518-3192.</subfield>
+		</datafield>
+		<datafield ind1="4" ind2="0" tag="856">
+			<subfield code="a">un-ilibrary.org</subfield>
+			<subfield code="u">http://dx.doi.org/10.18356/7afaf743-en</subfield>
+		</datafield>
+	</record>
+	<record>
+		<leader>01361nam a22003138i 4500</leader>
+		<controlfield tag="001">c2f4ce40-zh</controlfield>
+		<controlfield tag="003">FR-PaOEC</controlfield>
+		<controlfield tag="005">20171201000000.0</controlfield>
+		<controlfield tag="006">a     o  d i      </controlfield>
+		<controlfield tag="007">cr || |||m|n||</controlfield>
+		<controlfield tag="008">171201s2013    |||     o    i|0| 0 chi d</controlfield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">9789213622261</subfield>
+		</datafield>
+		<datafield ind1="7" ind2=" " tag="024">
+			<subfield code="a">10.18356/c2f4ce40-zh</subfield>
+			<subfield code="2">doi</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(FR-PaOEC)c2f4ce40-zh</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="a">FR-PaOEC</subfield>
+		</datafield>
+		<datafield ind1="2" ind2=" " tag="110">
+			<subfield code="a">UN.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="245">
+			<subfield code="a">国际法委员会年鉴 2000, 第一卷 II, 部分 2</subfield>
+			<subfield code="h">[electronic resource] /</subfield>
+			<subfield code="c">UN</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="260">
+			<subfield code="a">New York :</subfield>
+			<subfield code="b">United Nations,</subfield>
+			<subfield code="c">2013.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">164 p.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="490">
+			<subfield code="a">Yearbook of the International Law Commission,</subfield>
+			<subfield code="x">2412-1525.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="505">
+			<subfield code="a">--  --  --  --  --  --  --  --  --  --  -- .</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="650">
+			<subfield code="a">United Nations</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="650">
+			<subfield code="a">International Law and Justice</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="775">
+			<subfield code="t">Annuaire de la Commission du Droit International 2000, Vol. II, Partie 2</subfield>
+			<subfield code="z">9789211562514</subfield>
+			<subfield code="e">fre</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="775">
+			<subfield code="t">Anuario de la Comisión de Derecho Internacional 2000, Vol. II, Parte 2</subfield>
+			<subfield code="z">9789213621806</subfield>
+			<subfield code="e">spa</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="775">
+			<subfield code="t">Yearbook of the International Law Commission 2000, Vol. II, Part 2</subfield>
+			<subfield code="z">9789211557688</subfield>
+			<subfield code="e">eng</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="775">
+			<subfield code="t">Ежегодник Комиссии Международного Права 2000, Том. II, Часть 2</subfield>
+			<subfield code="z">9789213622117</subfield>
+			<subfield code="e">rus</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="830">
+			<subfield code="a">Yearbook of the International Law Commission,</subfield>
+			<subfield code="x">2412-1525.</subfield>
+		</datafield>
+		<datafield ind1="4" ind2="0" tag="856">
+			<subfield code="a">un-ilibrary.org</subfield>
+			<subfield code="u">http://dx.doi.org/10.18356/c2f4ce40-zh</subfield>
+		</datafield>
+	</record>
+	<record>
+		<leader>03032cam a22002658i 4500</leader>
+		<controlfield tag="001">d6097d8a-en</controlfield>
+		<controlfield tag="003">FR-PaOEC</controlfield>
+		<controlfield tag="005">20170701000000.0</controlfield>
+		<controlfield tag="006">a     o  d i      </controlfield>
+		<controlfield tag="007">cr || |||m|n||</controlfield>
+		<controlfield tag="008">160201s2014    |||     o    i|0| 0 eng d</controlfield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">9789210568425</subfield>
+		</datafield>
+		<datafield ind1="7" ind2=" " tag="024">
+			<subfield code="a">10.18356/d6097d8a-en</subfield>
+			<subfield code="2">doi</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(FR-PaOEC)d6097d8a-en</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="a">FR-PaOEC</subfield>
+		</datafield>
+		<datafield ind1="2" ind2=" " tag="110">
+			<subfield code="a">UN.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="245">
+			<subfield code="a">Compendium of recommendations on population and development</subfield>
+			<subfield code="h">[electronic resource]:</subfield>
+			<subfield code="b">Commission on population and development, 1994 –2014 (Volume I) /</subfield>
+			<subfield code="c">UN</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="260">
+			<subfield code="a">New York :</subfield>
+			<subfield code="b">United Nations,</subfield>
+			<subfield code="c">2014.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">253 p.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="490">
+			<subfield code="a">Statistical Papers - United Nations (Ser. A), Population and Vital Statistics Report,</subfield>
+			<subfield code="x">2412-138X.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="505">
+			<subfield code="a">Foreword -- Preface -- Explanatory notes -- Introduction -- Interrelationships between populations, sustained economic growth and sustainable development -- Gender equality, equity and empowerment of women -- The family, its roles, rights, composition and structure -- Population growth and structure -- Reproductive rights and reproductive health -- Health, morbidity and mortality -- Population distribution, urbanization and internal migration -- International migration -- Population, development and education -- Technology, research and development -- National action and international cooperation -- Partnership with the non-governmental sector -- Follow-up to the conference -- Principles of the Programme of Action -- General Assembly resolution 65/234: Follow-up the International Conference on Population and Development beyond 2014 -- Overview of the Commission on Population and Development, 1994-2014: Dates, sessions, themes, resolutions and decisions -- Mapping of the Programme of Action of the International Conference on Population and Development and resolutions of the Commission on Population and Development, 1994-2014.</subfield>
+		</datafield>
+		<datafield ind1="3" ind2=" " tag="520">
+			<subfield code="a">The Compendium of Recommendations on Population and Development: Commission on Population and Development (Vol. I) compares recommendations emanating from the Programme of Action of the International Conference on Population and Development with resolutions from the Commission on Population and Development. In addition, General Assembly resolutions on population and development since 1994 will be included in the Compendium as well. This Compendium will be prepared in time for the special session of the General Assembly on 22 September 2014 on the follow-up to the Programme of Action of the International Conference on Population and Development beyond 2014. The special session will mark the 20-year anniversary of the Programme of Action, and the Compendium will be an important and highly visible contribution to the event, informing Member States and the global public now and in the future.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="650">
+			<subfield code="a">Population and Demography</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="830">
+			<subfield code="a">Statistical Papers - United Nations (Ser. A), Population and Vital Statistics Report,</subfield>
+			<subfield code="x">2412-138X.</subfield>
+		</datafield>
+		<datafield ind1="4" ind2="0" tag="856">
+			<subfield code="a">un-ilibrary.org</subfield>
+			<subfield code="u">http://dx.doi.org/10.18356/d6097d8a-en</subfield>
+		</datafield>
+	</record>
+	<record>
+		<leader>01956cam a22002658i 4500</leader>
+		<controlfield tag="001">527e5125-en</controlfield>
+		<controlfield tag="003">FR-PaOEC</controlfield>
+		<controlfield tag="005">20170601000000.0</controlfield>
+		<controlfield tag="006">a     o  d i      </controlfield>
+		<controlfield tag="007">cr || |||m|n||</controlfield>
+		<controlfield tag="008">160201s2014    |||     os   i|0| 0 eng d</controlfield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">9789210568098</subfield>
+		</datafield>
+		<datafield ind1="7" ind2=" " tag="024">
+			<subfield code="a">10.18356/527e5125-en</subfield>
+			<subfield code="2">doi</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(FR-PaOEC)527e5125-en</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="a">FR-PaOEC</subfield>
+		</datafield>
+		<datafield ind1="2" ind2=" " tag="110">
+			<subfield code="a">UN.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="245">
+			<subfield code="a">World urbanization prospects</subfield>
+			<subfield code="h">[electronic resource]:</subfield>
+			<subfield code="b">The 2014 revision - highlights /</subfield>
+			<subfield code="c">UN</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="260">
+			<subfield code="a">New York :</subfield>
+			<subfield code="b">United Nations,</subfield>
+			<subfield code="c">2014.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">32 p.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="490">
+			<subfield code="a">Statistical Papers - United Nations (Ser. A), Population and Vital Statistics Report,</subfield>
+			<subfield code="x">2412-138X.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="505">
+			<subfield code="a">World urbanization trends 2014: Key facts -- Introduction -- Trends in urbanization -- Cities -- Policy implications -- References -- Table I: Urban and rural population, proportion urban and average annual rate of change of the proportion urban -- Table II: Population size and ranking of urban agglomerations with more than 5 million inhabitants as of 1 July 2014.</subfield>
+		</datafield>
+		<datafield ind1="3" ind2=" " tag="520">
+			<subfield code="a">This report presents the highlights of the 2014 Revision of World Urbanization Prospects, which contains the latest estimates of the urban and rural populations of 233 countries or areas from 1950 to 2014 and projections to 2050, as well as estimates of population size from 1950 to 2014 and projections to 2030 for all urban agglomerations with 300,000 inhabitants or more in 2014. The world urban population is at an all-time high, and the share of urban dwellers, currently at 54 per cent, is projected to represent two thirds of the global population in 2050. Continued urbanization will bring new opportunities and challenges for sustainable development.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="650">
+			<subfield code="a">Human Settlements and Urban Issues</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="830">
+			<subfield code="a">Statistical Papers - United Nations (Ser. A), Population and Vital Statistics Report,</subfield>
+			<subfield code="x">2412-138X.</subfield>
+		</datafield>
+		<datafield ind1="4" ind2="0" tag="856">
+			<subfield code="a">un-ilibrary.org</subfield>
+			<subfield code="u">http://dx.doi.org/10.18356/527e5125-en</subfield>
+		</datafield>
+	</record>
+	<record>
+		<leader>01615nam a22002418i 4500</leader>
+		<controlfield tag="001">f22452cd-en</controlfield>
+		<controlfield tag="003">FR-PaOEC</controlfield>
+		<controlfield tag="005">20171201000000.0</controlfield>
+		<controlfield tag="006">a     o  d i      </controlfield>
+		<controlfield tag="007">cr || |||m|n||</controlfield>
+		<controlfield tag="008">171201s2002    |||     o    i|0| 0 eng d</controlfield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">9789213618318</subfield>
+		</datafield>
+		<datafield ind1="7" ind2=" " tag="024">
+			<subfield code="a">10.18356/f22452cd-en</subfield>
+			<subfield code="2">doi</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(FR-PaOEC)f22452cd-en</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="a">FR-PaOEC</subfield>
+		</datafield>
+		<datafield ind1="2" ind2=" " tag="110">
+			<subfield code="a">ITC.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="245">
+			<subfield code="a">Converting LDC Export Opportunities into Business</subfield>
+			<subfield code="h">[electronic resource]:</subfield>
+			<subfield code="b">A Strategic Response /</subfield>
+			<subfield code="c">ITC</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="260">
+			<subfield code="a">New York :</subfield>
+			<subfield code="b">United Nations,</subfield>
+			<subfield code="c">2002.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">181 p.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="505">
+			<subfield code="a">Foreword -- About this book -- Acknowledgements -- Note -- World trade trends: Challenges and opportunities for LDCs -- Lessons from LDC business successes: An export opportunities framework -- Export performance and prospects of LDCs: The sectoral opportunities -- Building an enabling environment -- Support services for export development in LDCs -- LDC business success stories -- Business sector round table.</subfield>
+		</datafield>
+		<datafield ind1="3" ind2=" " tag="520">
+			<subfield code="a">This publication is based on research and discussion papers prepared for the Business Sector Round Table held during the Third United Nations Conference on the Least Developed Countries (LDCs). It draws lessons from successful entrepreneurs in LDCs and describes how to turn opportunities into effective business. It also reviews possibilities in different trade sectors and looks at measures that can help exporters to improve their performance and increase their market competitiveness.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="650">
+			<subfield code="a">International Trade and Finance</subfield>
+		</datafield>
+		<datafield ind1="4" ind2="0" tag="856">
+			<subfield code="a">un-ilibrary.org</subfield>
+			<subfield code="u">http://dx.doi.org/10.18356/f22452cd-en</subfield>
+		</datafield>
+	</record>
+</collection>
