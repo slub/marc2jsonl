@@ -229,10 +229,12 @@ public class Marc2JSONL {
 
 				marc.xmlReader().parse(new InputSource(System.in));
 
+				writer.writeLine();
 				writer.endCollection();
 			} else {
 
 				marc.writeCollection();
+				writer.writeLine();
 			}
 
 			writer.close();
