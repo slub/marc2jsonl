@@ -33,7 +33,7 @@
 		<version.maven.plugin.surefire>2.20</version.maven.plugin.surefire>
 		<version.slf4j.api>1.7.25</version.slf4j.api>
 		<version.logback>1.2.3</version.logback>
-		<version.marc>1.0.19</version.marc>
+		<version.marc>1.2.1</version.marc>
 		<version.commons-cli>1.4</version.commons-cli>
 		<junit.version>4.12</junit.version>
 		<version.jsonassert>1.5.0</version.jsonassert>
