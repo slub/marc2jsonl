@@ -71,6 +71,28 @@ public class Marc2JSONLTest {
 	}
 
 	@Test
+	public void testMARCInput2() throws IOException, JSONException {
+
+		final File input = new File(this.getClass().getResource("/test-marc-02.mrc").getFile());
+		final String inputFilePath = input.getAbsolutePath();
+		final String fileName = "test-marc-02.ldj";
+
+		final String actualResultFilePath = DEFAULT_RESULTS_FOLDER + File.separator + fileName;
+		final String expectedResultFilePath = TEST_RESOURCES_ROOT_PATH + File.separator + fileName;
+
+		final String[] args = new String[]{
+				INPUT_PARAMETER,
+				inputFilePath,
+				OUTPUT_PARAMETER,
+				actualResultFilePath
+		};
+
+		Marc2JSONL.main(args);
+
+		compareLDJResultFromFile(expectedResultFilePath, actualResultFilePath);
+	}
+
+	@Test
 	public void testMABXMLInput() throws IOException, JSONException {
 
 		final File input = new File(this.getClass().getResource("/test-mabxml.xml").getFile());

@@ -4,7 +4,7 @@
 	<groupId>de.slubdresden.marc2jsonl</groupId>
 	<artifactId>marc2jsonl</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>marc2jsonl</name>
 	<url>http://slub-dresden.de</url>
 
@@ -33,7 +33,7 @@
 		<version.maven.plugin.surefire>2.20</version.maven.plugin.surefire>
 		<version.slf4j.api>1.7.25</version.slf4j.api>
 		<version.logback>1.2.3</version.logback>
-		<version.marc>1.2.1</version.marc>
+		<version.marc>1.2.2</version.marc>
 		<version.commons-cli>1.4</version.commons-cli>
 		<junit.version>4.12</junit.version>
 		<version.jsonassert>1.5.0</version.jsonassert>
