@@ -1,6 +1,6 @@
 INSTALL_PATH=/usr/share/java/
 INSTALL_BATCH=/usr/bin/marc2jsonl
-MARC2JSONL_JAR=marc2jsonl-0.0.3-SNAPSHOT-onejar.jar
+MARC2JSONL_JAR=marc2jsonl-0.0.4-SNAPSHOT-onejar.jar
 default: compile
 
 compile: 
